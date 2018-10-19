@@ -1,0 +1,9 @@
+{
+  "directory": "public/lib",
+  "cwd": "./",
+  "storage": {
+    "packages" : "/tmp/.bower/packages",
+    "registry" : "/tmp/.bower/registry",
+    "links" : "/tmp/.bower/links"
+  }
+}

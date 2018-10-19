@@ -1,0 +1,13 @@
+{
+  "name": "transferwise",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Zsolt Fekete <qzephyrmor@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Pityuasd/transferwise",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
+}
