@@ -1,6 +1,11 @@
-var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Na mizu\n');
-}).listen(8080, 'localhost');
-console.log('Server running at http://localhost:8080/');
+const express = require("express");
+const app = express();
+const port = 3000;
+
+app.get("/", function (request, response) {
+    response.send("Na mizu");
+});
+
+app.listen(port, function () {
+    console.log("App listening on port " + port + "...");
+});
