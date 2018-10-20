@@ -33,7 +33,6 @@ window.TransferWise = window.TransferWise || {};
         });
     }
 
-    console.log("Creating map...");
     handler.map = createMap();
 
     // Dispatching event on document to initialize markers

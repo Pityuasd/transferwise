@@ -16,16 +16,26 @@ document.addEventListener("transferwise-map-initialized", function () {
     /**
      * @param {Number} latitude
      * @param {Number} longitude
-     * @param {String} wrapperClasses
-     * @param {String} markerClasses
+     * @param {String} color
+     * @param {Boolean} display
      */
-    function create(latitude, longitude, wrapperClasses, markerClasses) {
+    function create(latitude, longitude, color, display) {
+        if (typeof display === "undefined") {
+            display = true;
+        }
+
         var wrapper = document.createElement("div");
+
+        if (!display) {
+            wrapper.style.visibility = "hidden";
+        }
+
         var point = document.createElement("div");
         wrapper.appendChild(point);
 
-        wrapper.className = wrapperClasses || "marker-default-wrapper";
-        point.className = markerClasses || "marker-default";
+        color = color || "default";
+        wrapper.className = "marker-" + color + "-wrapper";
+        point.className = "marker-" + color;
 
         new mapboxgl.Marker(wrapper)
             .setLngLat([longitude, latitude])
@@ -45,11 +55,15 @@ document.addEventListener("transferwise-map-initialized", function () {
             },
             500
         );
+
+        return wrapper;
     }
 
     Marker = {
         create: create
     };
 
+    // Dispatching event on document to initialize markers
+    document.dispatchEvent(new Event(EVENT_MARKER_INITIALIZED));
     window.TransferWise.Marker = Marker;
 });
