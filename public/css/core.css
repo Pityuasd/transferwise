@@ -9,13 +9,21 @@ body {
 
 #map {
     width: 1000px;
-    height: 600px;
+    height: 800px;
 }
 
 hr.style13 {
     height: 0;
     border: 0;
     box-shadow: 0 15px 15px -10px #8c8b8b inset;
+}
+
+.form-group {
+    margin-bottom: 0px !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0 !important;
 }
 
 .marker-pink-wrapper {
