@@ -2,8 +2,4 @@
     "application": {
         "port": 3000
     },
-    "kafka": {
-        "host": "localhost:2181",
-        "clientId": "test"
-    }
 }
