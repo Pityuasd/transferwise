@@ -25,6 +25,7 @@ hr.style13 {
 
 .modal-backdrop.show {
     opacity: 0 !important;
+    z-index: -999;
 }
 
 /** Marker design **/
