@@ -5,34 +5,12 @@
 window.TransferWise = window.TransferWise || {};
 
 (function (handler) {
-    /**
-     * @type {string}
-     */
+
     var EVENT_MAP_INITIALIZED = "transferwise-map-initialized";
-
-    /**
-     * @type {string}
-     */
-    var container = "map";
-
     var actualCountries = [ null, null];
 
-    /**
-     *
-     */
+
     function createMap() {
-        // mapboxgl.accessToken = 'pk.eyJ1IjoicGp0dXhlIiwiYSI6ImNqbmdqNjF5MTAwcmEzcXA3aWQxa21objcifQ.QuNhQ-rc9Q3KwB6GHQCTPg';
-        // return new mapboxgl.Map({
-        //     container: container,
-        //     // style: "mapbox://styles/pjtuxe/cjngjnuvi0mom2rsqrq3u4sl5",
-        //     style: "mapbox://styles/kapitanytms/cjlgbkiev2eg52rnfiz9kmcka", //hosted style id
-        //     center: [60, 26], // starting position
-        //     zoom: 1, // starting zoom
-        //     maxBounds: [
-        //         [-180, -90],
-        //         [180, 90]
-        //     ]
-        // });
         mapboxgl.accessToken = 'pk.eyJ1IjoiaGl0ZXJ0YW1hcyIsImEiOiJjam5na3B2eGUwMHdxM3FzODE3N3Q4b202In0.YKQf0eYqkvC9anlkDO18CA';
         var map = new mapboxgl.Map({
             container: 'map',
@@ -105,36 +83,29 @@ window.TransferWise = window.TransferWise || {};
             map.on('click', function(e){
 
 
+                // function printMousePos(event) {
+                //     modalPositioning(e.point.x, e.point.y);
+                // }
 
+                // modalPositioning(parseInt(e.clientX), parseInt(e.clientY));
 
                 features = map.queryRenderedFeatures(e.point, { layers: ['states-layer'] });
                 var feature = features[0];
 
-                // function printMousePos(event) {
-                //     $('#exampleModal').css("top", event.clientX);
-                //     $('#exampleModal').css("right", event.clientY);
-                // }
-                //
-                // document.addEventListener("click", printMousePos);
-
-
-
-                // $("#exampleModal").modal()
-
+                if (!feature || !feature.properties) {
+                    return;
+                }
+                modalPositioning();
 
                 if(actualCountries[0] == null){
                     actualCountries[0] = feature.properties.geounit;
                     map.setFilter('states-highlited', ['in', 'geounit', feature.properties.geounit]);
                 }
-
                 else{
                     actualCountries[1] = actualCountries[0];
                     actualCountries[0] = feature.properties.geounit;
                     map.setFilter('states-highlited', ['in', 'geounit',].concat([actualCountries[0], actualCountries[1]]));
                 }
-
-
-
 
             });
 
@@ -148,7 +119,6 @@ window.TransferWise = window.TransferWise || {};
 
                 map.setFilter('states-selected', ['in', 'geounit', feature.properties.geounit]);
             });
-
         });
 
         return map
