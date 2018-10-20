@@ -10,6 +10,7 @@ body {
 #map {
     width: 1000px;
     height: 800px;
+    border-bottom: 1px solid #ddd;
 }
 
 hr.style13 {
@@ -181,7 +182,34 @@ hr.style13 {
     display: none !important;
 }
 
-.metric-group-container:before {
-    background-color: red !important;
-    height: 10px !important;
+.metric-group-container {
+    height: 50px;
+    transition: all 0.25s ease-in-out;
+    background-color: white;
+    padding: 12px 16px;
+}
+
+.row .metric-group-container:first-of-type {
+    padding-left: 21px !important;
+}
+
+.metric-group-container:hover {
+    height: 200px;
+    margin-top: -150px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.metric-group-container .hover-here-span {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.metric-group-container:hover .hover-here-span {
+    opacity: 0;
+}
+
+i.fa {
+    color: #777;
 }
