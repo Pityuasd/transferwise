@@ -164,3 +164,11 @@ hr.style13 {
 .text-right {
     text-align: right !important;
 }
+
+.mapboxgl-ctrl-bottom-right {
+    display: none !important;
+}
+
+.mapboxgl-ctrl-bottom-left {
+    display: none !important;
+}
