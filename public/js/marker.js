@@ -2,7 +2,7 @@
  *
  */
 
-document.addEventListener("transferwise-map-initialized", function () {
+document.addEventListener("DOMContentLoaded", function () {
     /**
      * @type {*|{}}
      */
