@@ -180,3 +180,8 @@ hr.style13 {
 .mapboxgl-ctrl-bottom-left {
     display: none !important;
 }
+
+.metric-group-container:before {
+    background-color: red !important;
+    height: 10px !important;
+}
