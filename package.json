@@ -23,6 +23,7 @@
     "mongoose": "^5.3.4",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
-    "socket.io-mongodb": "^1.1.1"
+    "socket.io-mongodb": "^1.1.1",
+    "uuid": "^3.3.2"
   }
 }
