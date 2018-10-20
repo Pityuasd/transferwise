@@ -1,6 +1,12 @@
 #map {
     width: 1000px;
-    height: 1000px;
+    height: 600px;
+}
+
+hr.style13 {
+    height: 0px;
+    border: 0;
+    box-shadow: 0 15px 15px -10px #8c8b8b inset;
 }
 
 .marker-pink-wrapper {

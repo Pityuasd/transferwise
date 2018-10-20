@@ -31,12 +31,12 @@ window.TransferWise = window.TransferWise || {};
         //         [180, 90]
         //     ]
         // });
-        mapboxgl.accessToken = 'pk.eyJ1IjoicGp0dXhlIiwiYSI6ImNqbmdqNjF5MTAwcmEzcXA3aWQxa21objcifQ.QuNhQ-rc9Q3KwB6GHQCTPg';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaGl0ZXJ0YW1hcyIsImEiOiJjam5na3B2eGUwMHdxM3FzODE3N3Q4b202In0.YKQf0eYqkvC9anlkDO18CA';
         var map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/dark-v9',
-            // center: [60, 26],
-            zoom: 1.5,
+            style: 'mapbox://styles/hitertamas/cjnhlyzz85g642rsc4f4p8hem',
+            center: [30, 26],
+            zoom: 1.4,
             position: 'fixed',
             minZoom: '0'
         });
