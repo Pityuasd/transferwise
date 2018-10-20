@@ -10,7 +10,6 @@ body {
 #map {
     width: 1000px;
     height: 800px;
-    border-bottom: 1px solid #ddd;
 }
 
 hr.style13 {
@@ -183,31 +182,50 @@ hr.style13 {
 }
 
 .metric-group-container {
-    height: 50px;
+    height: 75px;
     transition: all 0.25s ease-in-out;
     background-color: white;
-    padding: 12px 16px;
+    padding: 24px 16px;
 }
 
 .row .metric-group-container:first-of-type {
-    padding-left: 21px !important;
+    padding-left: 29px !important;
 }
 
 .metric-group-container:hover {
-    height: 200px;
-    margin-top: -150px;
+    height: 225px;
+    margin-bottom: -150px;
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    z-index: 999;
 }
 
-.metric-group-container .hover-here-span {
+.metric-group-container .hover-here-icon {
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
 }
 
-.metric-group-container:hover .hover-here-span {
+.metric-group-container i {
+    margin-right: 16px;
+    font-size: 24px;
+}
+
+.metric-group-container:hover .hover-here-icon {
     opacity: 0;
+}
+
+.metric-group-container .metric-title {
+    font-weight: 700;
+    margin-top: -6px;
+    position: absolute;
+    font-size: 17px;
+}
+
+.metric-group-container .metric-alt {
+    margin-top: 12px;
+    position: absolute;
+    font-size: 15px;
 }
 
 i.fa {
