@@ -5,6 +5,7 @@
         <link href="/css/grid.css" rel="stylesheet" />
 
         <!-- Mapbox stuffs -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet"/>
         <script src="https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css" rel="stylesheet"/>
         <script src="/socket.io/socket.io.js"></script>
@@ -12,16 +13,14 @@
 <body>
     <div id="map"></div>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoicGp0dXhlIiwiYSI6ImNqbmdqNjF5MTAwcmEzcXA3aWQxa21objcifQ.QuNhQ-rc9Q3KwB6GHQCTPg';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: "mapbox://styles/pjtuxe/cjngjnuvi0mom2rsqrq3u4sl5",
-            interactive: false
-        });
+
     </script>
     <script>
         var socket = io();
-        socket.on("test", console.log(value));
+        socket.on("test", console.log);
     </script>
+
+    <script src="/js/marker.js"></script>
+    <script src="/js/map.js"></script>
 </body>
 </html>
