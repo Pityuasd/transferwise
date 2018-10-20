@@ -8,6 +8,7 @@ body {
 }
 
 #map {
+    border-top: 1px solid #ddd;
     width: 1000px;
     height: 800px;
 }
@@ -24,6 +25,59 @@ hr.style13 {
 
 .modal-backdrop.show {
     opacity: 0 !important;
+}
+
+/** Marker design **/
+.marker-amber-wrapper {
+    visibility: visible;
+    z-index: 2;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFC107;
+}
+
+.marker-amber-wrapper .marker-amber {
+    -webkit-animation: dilation 1s infinite, fade-out 1s infinite;
+    /* Safari 4.0 - 8.0 */
+    animation: dilation 1.2s infinite, fade-out 1.2s infinite;
+    border: 1px solid #FFC107;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: rgba(255, 193, 7, 0.6);
+    z-index: -1;
+}
+
+.marker-lime-wrapper {
+    visibility: visible;
+    z-index: 2;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #CDDC39;
+}
+
+.marker-lime-wrapper .marker-lime {
+    -webkit-animation: dilation 1s infinite, fade-out 1s infinite;
+    /* Safari 4.0 - 8.0 */
+    animation: dilation 1.2s infinite, fade-out 1.2s infinite;
+    border: 1px solid #CDDC39;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background-color: rgba(205, 220, 57, 0.6);
+    z-index: -1;
 }
 
 .marker-pink-wrapper {
@@ -78,20 +132,22 @@ hr.style13 {
     z-index: -1;
 }
 
+/** Custom marker design end **/
+
 .marker-default-wrapper {
     visibility: visible;
     z-index: 2;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #37517e;
+    background-color: #5cc6fe;
 }
 
 .marker-default-wrapper .marker-default {
     -webkit-animation: dilation 1s infinite, fade-out 1s infinite;
     /* Safari 4.0 - 8.0 */
     animation: dilation 1.2s infinite, fade-out 1.2s infinite;
-    border: 1px solid #37517e;
+    border: 1px solid #5cc6fe;
     position: relative;
     top: 5px;
     left: 5px;
@@ -100,7 +156,7 @@ hr.style13 {
     border-radius: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
-    background-color: rgba(55, 81, 126, 0.6);
+    background-color: rgba(92, 198, 254, 0.6);
     z-index: -1;
 }
 

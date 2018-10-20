@@ -6,14 +6,18 @@ document.addEventListener("transferwise-marker-initialized", function () {
     /**
      * @param {String} from
      * @param {String} to
+     * @param {String=} color
      */
-    function create(from, to) {
+    function create(from, to, color) {
+        color = color || "default";
+
         window.TransferWise.Location.getLocationCoordinates(
             from,
             function (fromCoordinates) {
                 var fromWrapper = window.TransferWise.Marker.create(
                     fromCoordinates.latitude,
-                    fromCoordinates.longitude
+                    fromCoordinates.longitude,
+                    color
                 );
 
                 setTimeout(
@@ -24,16 +28,21 @@ document.addEventListener("transferwise-marker-initialized", function () {
                                 var toWrapper = window.TransferWise.Marker.create(
                                     toCoordinates.latitude,
                                     toCoordinates.longitude,
-                                    null,
+                                    color,
                                     false
                                 );
                                 var fromWrapperRect = fromWrapper.getBoundingClientRect();
                                 var toWrapperRect = toWrapper.getBoundingClientRect();
 
-                                var fixBezierCurveTransition = 10;
-                                var bezierCurveThirdPointX = (fromWrapperRect.x + toWrapperRect.x) / 2;
-                                var bezierCurveThirdPointY = (fromWrapperRect.y + toWrapperRect.y) / 2 + fixBezierCurveTransition;
-
+                                fireworks.push(
+                                    new Firework(
+                                        fromWrapperRect.x,
+                                        fromWrapperRect.y,
+                                        toWrapperRect.x,
+                                        toWrapperRect.y,
+                                        color
+                                    )
+                                );
                             }
                     )
                     },
