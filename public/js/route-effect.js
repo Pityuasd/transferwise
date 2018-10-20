@@ -12,6 +12,7 @@ var canvas = document.getElementById('canvas'),
     cw = window.innerWidth,
     ch = window.innerHeight,
     fireworks = [],
+    particles = [],
     hue = 100;
 
 // set canvas dimensions
