@@ -15,6 +15,8 @@ window.TransferWise = window.TransferWise || {};
      */
     var container = "map";
 
+    var actualCountries = [ null, null];
+
     /**
      *
      */
@@ -85,16 +87,55 @@ window.TransferWise = window.TransferWise || {};
                 'filter': ["in", "geounit", ""]
             })
 
+
+            if(actualCountries[0] != null){
+                map.setFilter('states-selected', ['in', 'geounit', actualCountries[0]]);
+            }
+
+            if( actualCountries[1] != null){
+                map.setFilter('states-selected', ['in', 'geounit', actualCountries[1]]);
+            }
+
+            if(actualCountries[0] != null && actualCountries[1] != null){
+                map.setFilter('states-selected', ['in', 'geounit'].concat([actualCountries[0], actualCountries[1]]));
+            }
+
+            map.getCanvas().style.cursor = 'pointer';
+
             map.on('click', function(e){
 
-                // $("#exampleModal").modal()
 
-                map.getCanvas().style.cursor = 'pointer';
+
 
                 features = map.queryRenderedFeatures(e.point, { layers: ['states-layer'] });
                 var feature = features[0];
 
-                map.setFilter('states-highlited', ['in', 'geounit', feature.properties.geounit]);
+                // function printMousePos(event) {
+                //     $('#exampleModal').css("top", event.clientX);
+                //     $('#exampleModal').css("right", event.clientY);
+                // }
+                //
+                // document.addEventListener("click", printMousePos);
+
+
+
+                // $("#exampleModal").modal()
+
+
+                if(actualCountries[0] == null){
+                    actualCountries[0] = feature.properties.geounit;
+                    map.setFilter('states-highlited', ['in', 'geounit', feature.properties.geounit]);
+                }
+
+                else{
+                    actualCountries[1] = actualCountries[0];
+                    actualCountries[0] = feature.properties.geounit;
+                    map.setFilter('states-highlited', ['in', 'geounit',].concat([actualCountries[0], actualCountries[1]]));
+                }
+
+
+
+
             });
 
             map.on('mousemove', function(e){
@@ -112,7 +153,6 @@ window.TransferWise = window.TransferWise || {};
 
         return map
     }
-
 
     handler.map = createMap();
 
