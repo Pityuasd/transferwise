@@ -101,6 +101,10 @@ window.TransferWise = window.TransferWise || {};
                 features = map.queryRenderedFeatures(e.point, { layers: ['states-layer'] });
                 var feature = features[0];
 
+                if (!feature || !feature.properties) {
+                    return;
+                }
+
                 map.setFilter('states-selected', ['in', 'geounit', feature.properties.geounit]);
             });
 
