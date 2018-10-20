@@ -1,9 +1,11 @@
 const config = require("./config.json");
-const mongoose = require('mongoose');
-const express = require("express");
-const bodyParser = require('body-parser');
-const app = express();
 const port = config.application.port || 3000;
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const express = require('express');
+var app = express();
+var server = app.listen(3000);
+var io = require('socket.io').listen(server);
 
 // Requiring models
 const assign = require("./models/assignhelper");
@@ -14,16 +16,23 @@ mongoose.connect(config.mongo.host, function (error) {
 });
 
 // Serving static data from templates directory
-app.use(express.static("public"));
+app.use(require("express").static("public"));
 // For parsing application/json requests
 app.use(bodyParser.json());
+
+io.on('connection', function (socket) {
+    console.log('a user connected');
+
+    setInterval(
+        function () {
+            socket.emit("test", "value");
+        },
+        500
+    );
+});
 
 app.post("/events", function (request, response) {
     var event = assign(new EventModel(), request.body);
     event.save();
     response.send(event);
-});
-
-app.listen(port, function () {
-    console.log("App listening on port " + port + "...");
 });
