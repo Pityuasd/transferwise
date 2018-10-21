@@ -16,7 +16,7 @@ window.TransferWise = window.TransferWise || {};
             container: 'map',
             style: 'mapbox://styles/hitertamas/cjnhlyzz85g642rsc4f4p8hem',
             center: [30, 26],
-            zoom: 1.5,
+            zoom: 1,
             position: 'fixed',
             minZoom: '0',
             interactive: false,
