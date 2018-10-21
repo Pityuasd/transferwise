@@ -447,16 +447,22 @@ i.fa {
 }
 
 .btn-primary {
-    color: #f8fefb;
-    background-color: #56b9ff;
-    border-color: #56b9ff;
+    color: #f8fefb !important;
+    background-color: #56b9ff !important;
+    border-color: #56b9ff !important;
     -webkit-transition: all .15s ease-in-out;
     -o-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
 }
 
 .btn-primary:hover {
-    color: #FFF;
-    background-color: #00a4df;
-    border-color: #00a4df;
+    color: #f8fefb !important;
+    background-color: #00a4df !important;
+    border-color: #00a4df !important;
+}
+
+.tutorial-modal {
+    position: absolute !important;
+    top: calc(100% / 2 - 120px) !important;
+    left: calc(100% - 340px) !important;
 }
