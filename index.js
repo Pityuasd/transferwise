@@ -17,6 +17,8 @@ const EventModel = require("./models/event");
 const ArrowModel = require("./models/arrow");
 const MetricModel = require("./models/metric");
 const TransferModel = require("./models/transfer");
+const CurrencyModel = require("./models/currency");
+const CountryCurrencyModel = require("./models/countryCurrency");
 
 // To work around "MongoError: cannot open $changeStream for non-existent
 // database: test" for this example
@@ -128,8 +130,18 @@ app.get("/price", function (request, response) {
     var countryCode1 = request.param("code1");
     var countryCode2 = request.param("code2");
 
-    var mockData = {"currency1": "EUR", "currency2": "HUF", "price": 301.14};
-    response.send(mockData)
+    CountryCurrencyModel.findOne({"abbreviation": countryCode1}, function (err, countrycurrency) {
+        if (err) return console.error(err);
+            var currency1 = countrycurrency['currency'];
+
+        CountryCurrencyModel.findOne({"abbreviation": countryCode2}, function (err, countrycurrency2) {
+            var currency2 = countrycurrency2['currency'];
+
+            CurrencyModel.findOne({"from": currency1, "to": currency2}, function (err, currencyTransfer) {
+                response.send(currencyTransfer);
+            });
+        });
+    });
 });
 
 
