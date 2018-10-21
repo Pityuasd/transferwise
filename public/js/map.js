@@ -2,12 +2,13 @@
  *
  */
 
+var actualCountries = [ null, null];
+
 window.TransferWise = window.TransferWise || {};
 
 (function (handler) {
 
     var EVENT_MAP_INITIALIZED = "transferwise-map-initialized";
-    var actualCountries = [ null, null];
 
 
     function createMap() {
@@ -95,7 +96,6 @@ window.TransferWise = window.TransferWise || {};
                 if (!feature || !feature.properties) {
                     return;
                 }
-                modalPositioning();
 
                 if(actualCountries[0] == null){
                     actualCountries[0] = feature.properties.geounit;
@@ -107,6 +107,29 @@ window.TransferWise = window.TransferWise || {};
                     map.setFilter('states-highlited', ['in', 'geounit',].concat([actualCountries[0], actualCountries[1]]));
                 }
 
+                var name;
+
+                if(actualCountries[0] != null && actualCountries[1] != null){
+                    name = actualCountries[0] + " - " + actualCountries[1];
+
+                }else{
+                    name = actualCountries[0];
+
+                    function getCountry(){
+                        $.get("/country", {
+                            code: feature.properties.iso_a2
+                        }, function(data, status){
+                            JSON.stringify(data);
+                            document.getElementById('countOfCustomer').innerHTML = data.customers;
+                            document.getElementById('countOfTransactions').innerHTML = data.transactions;
+                            document.getElementById('moneyTransfered').innerHTML = data.moneyTransfered;
+                        });
+                    }
+                    getCountry();
+                }
+                document.getElementById('country-info-title').innerHTML = name;
+
+                modalPositioning();
             });
 
             map.on('mousemove', function(e){
@@ -129,3 +152,9 @@ window.TransferWise = window.TransferWise || {};
     // Dispatching event on document to initialize markers
     document.dispatchEvent(new Event(EVENT_MAP_INITIALIZED));
 })(window.TransferWise);
+
+    function resetActualCountries(){
+        actualCountries[0] = null;
+        actualCountries[1] = null;
+    }
+
