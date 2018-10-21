@@ -1,3 +1,7 @@
+body:not(.selectable) {
+    user-select: none !important;
+}
+
 body {
     font-family: 'Lato', sans-serif !important;
     font-weight: 400;
@@ -20,7 +24,7 @@ hr.style13 {
 }
 
 .form-group {
-    margin-bottom: 0px !important;
+    margin-bottom: 0 !important;
 }
 
 .modal-backdrop.show {
@@ -240,7 +244,7 @@ hr.style13 {
 
 .metric-group-container {
     height: 75px;
-    transition: all 0.25s ease-in-out;
+    transition: all 0.2s ease-in-out;
     background-color: white;
     padding: 24px 16px;
 }
@@ -250,12 +254,16 @@ hr.style13 {
 }
 
 .metric-group-container:hover {
-    height: 225px;
-    margin-bottom: -150px;
+    height: 300px;
+    margin-bottom: -225px;
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
     z-index: 999;
+}
+
+.metric-group-container:hover .main-metric-container {
+    border-bottom: 1px solid #ddd;
 }
 
 .metric-group-container .hover-here-icon {
@@ -314,6 +322,51 @@ hr.style13 {
 
 .metric-group-container:hover .metric-base-icon {
     opacity: 0;
+}
+
+.metric-containers {
+    opacity: 0;
+    z-index: -100;
+    transition: all 0.2s ease-in-out;
+}
+
+.metric-group-container:hover .metric-containers {
+    opacity: 1;
+    z-index: 2;
+}
+
+.metric-group-container:hover .metric-containers .metric-title,
+.metric-group-container:hover .metric-containers .metric-alt {
+    opacity: 1;
+}
+
+.metric-containers .metric-container:after {
+    content : "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 150px;
+    border-bottom: 1px solid #ddd;
+}
+
+.metric-containers .metric-container i {
+    margin-right: 30px;
+}
+
+.metric-containers .metric-container {
+    position: relative;
+    padding: 20px;
+    height: 75px;
+    width: 100%;
+}
+
+.metric-containers .metric-container:last-of-type:after {
+    border-bottom: 0;
+}
+
+.main-metric-container {
+    min-height: 50px;
 }
 
 i.fa {
