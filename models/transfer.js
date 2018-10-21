@@ -35,16 +35,13 @@ const schema = mongoose.Schema({
     }
 });
 
-// Creating model from the schema
-const model = mongoose.model("Transfer", schema);
-
 schema.post("save", function (document) {
     var identifier = {};
     identifier["date"] = new Date().toISOString().substr(0, 10);
 
     var operator = {"$inc": {
-        "values.transfer": 1
-    }};
+            "values.transfer": 1
+        }};
     MetricModel.update(
         {"_id": identifier},
         operator,
@@ -54,6 +51,9 @@ schema.post("save", function (document) {
         }
     );
 });
+
+// Creating model from the schema
+const model = mongoose.model("Transfer", schema);
 
 // Exporting the created model for the external usages
 module.exports = model;
