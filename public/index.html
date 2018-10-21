@@ -314,6 +314,21 @@
                 resetActualCountries();
             });
 
+            $(".skip-button").click(function () {
+                $(".map-container-overlay").css({
+                    opacity: 0
+                });
+
+                setTimeout(
+                    function () {
+                        $(".map-container-overlay").css({
+                            display: "none"
+                        })
+                    },
+                    1500
+                );
+            });
+
             $(".try-it-button").click(function () {
                 $(".map-container-overlay").css({
                     opacity: 0
@@ -328,7 +343,7 @@
                         })
                     },
                     1500
-                )
+                );
             });
 
 
