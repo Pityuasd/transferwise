@@ -40,8 +40,9 @@ schema.post("save", function (document) {
     identifier["date"] = new Date().toISOString().substr(0, 10);
 
     var operator = {"$inc": {
-            "values.transfer": 1
-        }};
+        "transactions": 1,
+        "moneyTransferred": document.src_currency
+    }};
     MetricModel.update(
         {"_id": identifier},
         operator,
