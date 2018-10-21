@@ -3,6 +3,7 @@ body:not(.selectable) {
 }
 
 body {
+    overflow-x: hidden;
     font-family: 'Lato', sans-serif !important;
     font-weight: 400;
     font-size: 15px;
@@ -12,6 +13,7 @@ body {
 }
 
 #map {
+    background-color: #f2f5f7;
     border-top: 1px solid #ddd;
     width: 1000px;
     height: 800px;
@@ -371,4 +373,90 @@ hr.style13 {
 
 i.fa {
     color: #777;
+}
+
+/** Typing effect **/
+.ityped-cursor {
+    font-size: 35px;
+    opacity: 1;
+    -webkit-animation: blink 0.3s infinite;
+    -moz-animation: blink 0.3s infinite;
+    animation: blink 0.3s infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes blink {
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes blink {
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.map-container-overlay {
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    z-index: 1;
+    height: 800px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.header-text-container button {
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.header-text-container.finished button {
+    opacity: 1;
+}
+
+.header-text-container.finished .header-text {
+    transition: all 1s ease-in-out;
+    margin-top: -30px;
+}
+
+.map-container-overlay .header-text {
+    top: 50%;
+    left: calc(50% - 220px);
+    font-size: 36px;
+}
+
+.map-container-overlay div {
+    z-index: 1;
+}
+
+#hero {
+    font-weight: 700;
+}
+
+.hero-icon {
+    margin-left: 8px;
+    color: #f8fefb !important;
+}
+
+.btn-primary {
+    color: #f8fefb;
+    background-color: #56b9ff;
+    border-color: #56b9ff;
+    -webkit-transition: all .15s ease-in-out;
+    -o-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+}
+
+.btn-primary:hover {
+    color: #FFF;
+    background-color: #00a4df;
+    border-color: #00a4df;
 }

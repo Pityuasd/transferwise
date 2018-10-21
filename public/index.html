@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Dashboard - TransferWise</title>
+        <title>TransferWise</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -241,8 +241,23 @@
         </div>
 
         <div class="map-container">
+            <div class="map-container-overlay">
+                <div class="header-text-container">
+                    <div style="position: absolute" class="text-center header-text">
+                        TransferWise is
+                        <span id="hero"></span>
+                        <div style="margin-top: 6px;">
+                            <button class="btn btn-primary btn-lg btn-icon try-it-button" style="z-index: 999999;">
+                                Try it
+                                <i class="fa fa-angle-right hero-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div style=" width: 100%; position: absolute;" id="map"></div>
-            <canvas id="canvas" style="width: 100%; position: absolute; height: 600px;"></canvas>
+            <canvas id="canvas" style="width: 100%; position: absolute; height: 800px;"></canvas>
         </div>
 
         <div id="footer">
@@ -260,17 +275,51 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/ityped@1.0.3" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="/js/route-effect.js"></script>
     <script src="/js/locationHelper.js"></script>
     <script src="/js/route.js"></script>
+    <script src="/js/route-effect.js"></script>
     <script src="/js/marker.js"></script>
     <script src="/js/map.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            ityped.init('#hero', {
+                strings: [
+                    "transparent.",
+                    "fast.",
+                    "reliable.",
+                    "awesome."
+                ],
+                startDelay: 200,
+                loop: false,
+                onFinished: function () {
+                    document.querySelector(".header-text-container").classList.add("finished");
+                }
+            });
+
+            document.querySelector("#canvas").addEventListener("click", function (e) {
+                e.target.style.display = "none";
+            });
+
             $('#countryReset').on('click', function () {
                 resetActualCountries();
+            });
+
+            $(".try-it-button").click(function () {
+                $(".map-container-overlay").css({
+                    opacity: 0
+                });
+
+                setTimeout(
+                    function () {
+                        $(".map-container-overlay").css({
+                            display: "none"
+                        })
+                    },
+                    1500
+                )
             });
         });
 
@@ -278,6 +327,36 @@
         socket.on("arrows", function (data) {
             // Showing transfer routes from socket
             window.TransferWise.Route.create(data.src_country, data.tar_country);
+        });
+
+        function end() {
+            var map = window.TransferWise.map;
+
+            for (let i = 0; i <= 60; i++) {
+                setTimeout(
+                    function () {
+                        map.setPitch(60 - i);
+                    },
+                    20 * i
+                );
+            }
+        }
+
+        function start() {
+            var map = window.TransferWise.map;
+
+            for (let i = 0; i <= 60; i++) {
+                setTimeout(
+                    function () {
+                        map.setPitch(i);
+                    },
+                    20 * i
+                );
+            }
+        }
+
+        $(document).on("click", "[data-canvas-show]", function () {
+            $("#canvas").show();
         });
     </script>
 </body>
@@ -290,7 +369,7 @@
             <div class="modal-header" style="background-color: #00b9ff">
                 <h5 class="modal-title" id="country-info-title">
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-canvas-show>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -316,7 +395,7 @@
             <div class="modal-header" style="background-color: #00b9ff">
                 <h5 class="modal-title" id="countries-info-title">
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-canvas-show>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

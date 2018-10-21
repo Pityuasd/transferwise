@@ -37,9 +37,9 @@ document.addEventListener("transferwise-marker-initialized", function () {
                                 fireworks.push(
                                     new Firework(
                                         fromWrapperRect.x,
-                                        fromWrapperRect.y,
+                                        fromWrapperRect.y - 50,
                                         toWrapperRect.x,
-                                        toWrapperRect.y,
+                                        toWrapperRect.y - 55,
                                         color
                                     )
                                 );
