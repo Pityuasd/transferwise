@@ -12,7 +12,7 @@ const schema = mongoose.Schema({
     transactions: {
         type: Number
     },
-    moneyTransfered: {
+    moneyTransferred: {
         type: Number
     }
 });
