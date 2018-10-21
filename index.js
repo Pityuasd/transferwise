@@ -94,3 +94,12 @@ app.post("/events", function (request, response) {
     event.save();
     response.send(event);
 });
+
+app.get("/country", function (request, response) {
+    var countryCode = request.param("code");
+    MetricModel.findOne({"_id.country": countryCode}, function (err, metric) {
+        if (err) return console.error(err);
+        console.log(metric);
+        response.send(metric);
+        });
+});
