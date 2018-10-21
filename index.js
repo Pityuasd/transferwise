@@ -99,7 +99,19 @@ app.get("/country", function (request, response) {
     var countryCode = request.param("code");
     MetricModel.findOne({"_id.country": countryCode}, function (err, metric) {
         if (err) return console.error(err);
-        console.log(metric);
-        response.send(metric);
-        });
+        if(metric) {
+            response.send(metric);
+        } else {
+            var mockMetric = {
+                _id: {
+                    "type": "ALL_TIME_COUNTRY",
+                    "country": countryCode
+                },
+                "customers": 150,
+                "transactions": 139,
+                "moneyTransfered": 156948
+            }
+            response.send(mockMetric);
+        }
+    });
 });
