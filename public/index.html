@@ -334,7 +334,6 @@
                 $.throttle(
                     100,
                     function (data) {
-                        console.log("throttle");
                         window.TransferWise.Route.create(
                             data.src_country,
                             data.tar_country
