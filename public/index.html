@@ -326,6 +326,19 @@
             });
         });
 
+        var tutorialModalStepFirst = "#tutorialModalStepFirst";
+        var tutorialModalStepSecond = "#tutorialModalStepSecond";
+        var tutorialModalStepThird = "#tutorialModalStepThird";
+        var tutorialModalStepFourth = "#tutorialModalStepFourth";
+        var tutorialModalStepFifth = "#tutorialModalStepFifth";
+        var tutorialModalStepSixth = "#tutorialModalStepSixth";
+        setPositionTutorialModal(tutorialModalStepFirst);
+        setPositionTutorialModal(tutorialModalStepSecond);
+        setPositionTutorialModal(tutorialModalStepThird);
+        setPositionTutorialModal(tutorialModalStepFourth);
+        setPositionTutorialModal(tutorialModalStepFifth);
+        setPositionTutorialModal(tutorialModalStepSixth);
+
         var socket = io();
         socket.on(
             "arrows",
@@ -403,7 +416,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="countries" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false" data-backdrop="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -441,6 +453,154 @@
                         });
                     </script>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Tutorial -->
+<div class="modal fade" id="openModalTutorial" tabindex="-1" role="dialog" aria-hidden="false" aria-labelledby="startModalTutorialTitle" data-backdrop="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="startModalTutorialTitle">Welcome to Transfergularity.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Welcome to Transfergularity. Do you want to take a tour on our website?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, thanks.</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="startTutorial">Yes, of course.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial First Step -->
+<div class="modal hide" id="tutorialModalStepFirst" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepFirstTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepFirstTitle">Step: 1 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Here you can see all money transactions over the world in real time at TransferWise.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nextSecondTutorialStep">Next step</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial Second Step -->
+<div class="modal hide" id="tutorialModalStepSecond" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepSecondTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepSecondTitle">Step: 2 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Select the country where do you want to transfer money from by clicking on it.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nextThirdTutorialStep">Next step</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial Third Step -->
+<div class="modal hide" id="tutorialModalStepThird" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepThirdTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepThirdTitle">Step: 3 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Here you can see a box, where you can find some information about this selected country.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nextFourthTutorialStep">Next step</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial Fourth Step -->
+<div class="modal hide" id="tutorialModalStepFourth" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepFourthTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepFourthTitle">Step: 4 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Please Select any other country. if you select a second country this new country will be your target country, where you want to transfer your money via TransferWise.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nextFifthTutorialStep">Next step</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial Fifth Step -->
+<div class="modal hide" id="tutorialModalStepFifth" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepFifthTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepFifthTitle">Step: 5 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                In this new box you can find some information about exchange rate and you can calculate the fee and the amount of your transaction.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="nextSixthTutorialStep">Show trasfer map</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutorial Sixth Step -->
+<div class="modal hide" id="tutorialModalStepSixth" tabindex="-1" role="dialog" aria-labelledby="tutorialModalStepSixthTitle" aria-hidden="false" data-backdrop="true" modal-backdrop="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tutorialModalStepSixthTitle">Step: 6 / 6</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Now you are ready to explore your future transactions.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Another transaction</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="zsoltiFuggvenyenekHivasa">Live map</button>
             </div>
         </div>
     </div>
