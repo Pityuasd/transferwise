@@ -16,6 +16,7 @@ const assign = require("./models/assignhelper");
 const EventModel = require("./models/event");
 const ArrowModel = require("./models/arrow");
 const MetricModel = require("./models/metric");
+const TransferModel = require("./models/transfer");
 
 // To work around "MongoError: cannot open $changeStream for non-existent
 // database: test" for this example
@@ -78,7 +79,7 @@ io.on('connection', function (socket) {
             }
         });
 
-        const arrowsCollection = dbRepl.collection('arrows');
+        const arrowsCollection = dbRepl.collection('transfers');
         const arrowsChangeStream = arrowsCollection.watch();
 
         arrowsChangeStream.on('change', (change) => {
@@ -87,6 +88,13 @@ io.on('connection', function (socket) {
                 socket.emit("arrows", change['fullDocument']);
             }
         });
+});
+
+
+app.post("/transfer", function (request, response) {
+    var transfer = assign(new TransferModel(), request.body);
+    transfer.save();
+    response.send(transfer);
 });
 
 app.post("/events", function (request, response) {
@@ -110,7 +118,7 @@ app.get("/country", function (request, response) {
                 "customers": 150,
                 "transactions": 139,
                 "moneyTransfered": 156948
-            }
+            };
             response.send(mockMetric);
         }
     });
@@ -123,3 +131,22 @@ app.get("/price", function (request, response) {
     var mockData = {"currency1": "EUR", "currency2": "HUF", "price": 301.14};
     response.send(mockData)
 });
+
+
+
+var transfers = require('./resources/transfers.json');
+// Mock data every few seconds.
+setInterval(
+    function () {
+        var i = 1;
+        for (; i % 100 !== 0; i++) {
+            var transfer = assign(new TransferModel(), transfers[i]);
+            transfer['_id'] = uuid.v1();
+            transfer.save();
+            if (i === transfers.length) {
+                i = 1;
+            }
+        }
+    },
+    1000
+);

@@ -5,13 +5,10 @@
 var actualCountries = [ null, null ];
 var countryCodes = [ null, null ];
 
-
 window.TransferWise = window.TransferWise || {};
 
 (function (handler) {
-
     var EVENT_MAP_INITIALIZED = "transferwise-map-initialized";
-
 
     function createMap() {
         mapboxgl.accessToken = 'pk.eyJ1IjoiaGl0ZXJ0YW1hcyIsImEiOiJjam5na3B2eGUwMHdxM3FzODE3N3Q4b202In0.YKQf0eYqkvC9anlkDO18CA';
@@ -84,7 +81,7 @@ window.TransferWise = window.TransferWise || {};
             map.getCanvas().style.cursor = 'pointer';
 
             map.on('click', function(e){
-
+                console.log("meh");
 
                 // function printMousePos(event) {
                 //     modalPositioning(e.point.x, e.point.y);
