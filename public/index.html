@@ -452,6 +452,23 @@
                 <div>
                     <label>Price: <span id="price"></span></label>
                 </div>
+                <div>
+                    <div class="form-group">
+                        <input type="text" placeholder="transacted value" class="form-control form-inline" id="transactedValue">
+                    </div>
+                    <button style="padding-top: 1%" class="btn btn-primary btn-sm" id="calculate">Calculate</button>
+                </div>
+                <div>
+                    <span id="result"></span>
+                    <script>
+                        $(document).ready(function() {
+                            $("#calculate").click(function(){
+                                var transactedValue = $('#transactedValue').val();
+                                document.getElementById('result').innerHTML = Math.round(transactedValue * $('#price')[0].innerHTML);
+                            });
+                        });
+                    </script>
+                </div>
             </div>
         </div>
     </div>
