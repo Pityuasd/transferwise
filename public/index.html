@@ -34,14 +34,6 @@
                         <img src="images/logo.png" style="margin-top: -2px;">
                     </a>
                 </div>
-                <!--<div class="col-md-2">-->
-                    <!--<button id="countryReset" type="button" class="btn btn-primary">Reset</button>-->
-                <!--</div>-->
-                <!--<div class="col-md-2">-->
-                    <!--<div class="form-group">-->
-                        <!--<input type="text" class="form-control form-inline" id="usr">-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </nav>
 
@@ -52,8 +44,8 @@
                         <i class="fa fa-piggy-bank metric-base-icon"></i>
                     </div>
                     <div class="media-body">
-                        <span class="metric-title">
-                            &euro; 3.123.642
+                        <span class="metric-title" data-metric="moneyTransferred">
+                            -
                         </span>
                         <span class="metric-alt">
                             total savings
@@ -73,8 +65,8 @@
                             <i class="fa fa-piggy-bank"></i>
                         </div>
                         <div class="media-body media-right">
-                            <span class="metric-title">
-                                &euro; 3.123.642
+                            <span class="metric-title" data-metric="moneyTransferred">
+                                -
                             </span>
                                 <span class="metric-alt">
                                 total savings
@@ -117,8 +109,8 @@
                         <i class="fa fa-credit-card metric-base-icon"></i>
                     </div>
                     <div class="media-body">
-                        <span class="metric-title">
-                            &euro; 3.123.642
+                        <span class="metric-title" data-metric="transactions">
+                            -
                         </span>
                         <span class="metric-alt">
                             transactions completed
@@ -138,8 +130,8 @@
                             <i class="fa fa-credit-card"></i>
                         </div>
                         <div class="media-body media-right">
-                            <span class="metric-title">
-                                &euro; 3.123.642
+                            <span class="metric-title" data-metric="transactions">
+                                -
                             </span>
                             <span class="metric-alt">
                                 transactions completed
@@ -379,14 +371,23 @@
             // }
         );
 
+        var updateElementValue = function (name, value) {
+            var element = document.querySelectorAll("[data-metric='" + name + "']");
+
+            if (!element) {
+                return;
+            }
+
+            element.forEach(function (el) {
+                el.innerHTML = new Intl.NumberFormat("en-EN").format(value);
+            });
+        };
+
         socket.on(
             "metric",
-            $.throttle(
-                100,
-                function (data) {
-                    console.log(data);
-                }
-            )
+            function (data) {
+                updateElementValue(data.name, data.value);
+            }
         );
 
         function end() {

@@ -76,7 +76,16 @@ io.on('connection', function (socket) {
         metricsChangeStream.on('change', (change) => {
             // Declare special rules for the data we need on the counters
             if (change['operationType'] === 'update') {
-                socket.emit("metric", change['fullDocument']);
+                var fields = change["updateDescription"]["updatedFields"];
+
+                for (var i in fields) {
+                    if (fields.hasOwnProperty(i)) {
+                        socket.emit("metric", {
+                            name: i,
+                            value: fields[i]
+                        });
+                    }
+                }
             }
         });
 
