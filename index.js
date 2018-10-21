@@ -145,5 +145,5 @@ setInterval(
         entity["_id"] = uuid.v1();
         entity.save();
     },
-    1000
+    75
 );
