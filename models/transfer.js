@@ -41,7 +41,7 @@ schema.post("save", function (document) {
 
     var operator = {"$inc": {
         "transactions": 1,
-        "moneyTransferred": document.src_currency
+        "moneyTransferred": document.source_amount
     }};
     MetricModel.update(
         {"_id": identifier},
