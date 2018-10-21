@@ -139,7 +139,7 @@ var transfers = require('./resources/transfers.json');
 setInterval(
     function () {
         var i = 1;
-        for (; i % 100 !== 0; i++) {
+        for (; i % 500 !== 0; i++) {
             var transfer = assign(new TransferModel(), transfers[i]);
             transfer['_id'] = uuid.v1();
             transfer.save();
