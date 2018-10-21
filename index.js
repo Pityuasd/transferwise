@@ -138,15 +138,12 @@ var transfers = require('./resources/transfers.json');
 // Mock data every few seconds.
 setInterval(
     function () {
-        var i = 1;
-        for (; i % 200 !== 0; i++) {
-            var transfer = assign(new TransferModel(), transfers[i]);
-            transfer['_id'] = uuid.v1();
-            transfer.save();
-            if (i === transfers.length) {
-                i = 1;
-            }
-        }
+        var entity = assign(
+            new TransferModel(),
+            transfers[parseInt(Math.random() * transfers.length)]
+        );
+        entity["_id"] = uuid.v1();
+        entity.save();
     },
-    1000
+    75
 );
