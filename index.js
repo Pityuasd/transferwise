@@ -115,3 +115,11 @@ app.get("/country", function (request, response) {
         }
     });
 });
+
+app.get("/price", function (request, response) {
+    var countryCode1 = request.param("code1");
+    var countryCode2 = request.param("code2");
+
+    var mockData = {"currency1": "EUR", "currency2": "HUF", "price": 301.14};
+    response.send(mockData)
+});
