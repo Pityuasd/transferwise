@@ -16,7 +16,7 @@ body {
     background-color: #f2f5f7;
     border-top: 1px solid #ddd;
     width: 1000px;
-    height: 800px;
+    height: calc(100% - 120px);
 }
 
 hr.style13 {
@@ -408,7 +408,7 @@ i.fa {
     transition: all 0.5s ease-in-out;
     position: absolute;
     z-index: 1;
-    height: 800px;
+    height: calc(100% - 120px);
     width: 100%;
     background-color: rgba(255, 255, 255, 0.7);
 }
