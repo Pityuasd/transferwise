@@ -76,8 +76,7 @@ io.on('connection', function (socket) {
         metricsChangeStream.on('change', (change) => {
             // Declare special rules for the data we need on the counters
             if (change['operationType'] === 'update') {
-                // socket.emit("metric", change['fullDocument']);
-                console.log(change);
+                socket.emit("metric", change['fullDocument']);
             }
         });
 
