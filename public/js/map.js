@@ -2,7 +2,9 @@
  *
  */
 
-var actualCountries = [ null, null];
+var actualCountries = [ null, null ];
+var countryCodes = [ null, null ];
+
 
 window.TransferWise = window.TransferWise || {};
 
@@ -99,11 +101,17 @@ window.TransferWise = window.TransferWise || {};
 
                 if(actualCountries[0] == null){
                     actualCountries[0] = feature.properties.geounit;
+                    countryCodes[0] = feature.properties.iso_a2;
+
                     map.setFilter('states-highlited', ['in', 'geounit', feature.properties.geounit]);
                 }
                 else{
                     actualCountries[1] = actualCountries[0];
+                    countryCodes[1] = countryCodes[0];
+
+                    countryCodes[0] = feature.properties.iso_a2;
                     actualCountries[0] = feature.properties.geounit;
+
                     map.setFilter('states-highlited', ['in', 'geounit',].concat([actualCountries[0], actualCountries[1]]));
                 }
 
@@ -112,6 +120,20 @@ window.TransferWise = window.TransferWise || {};
                 if(actualCountries[0] != null && actualCountries[1] != null){
                     name = actualCountries[0] + " - " + actualCountries[1];
 
+                    function getCountries() {
+                        $.get("/price",{
+                            code1: countryCodes[0],
+                            code2: countryCodes[1]
+                        }, function (data, status) {
+                            JSON.stringify(data);
+                            document.getElementById('fromCurrency').innerHTML = data.currency1;
+                            document.getElementById('toCurrency').innerHTML = data.currency2;
+                            document.getElementById('price').innerHTML = data.price;
+                        });
+                    }
+                    getCountries();
+                    document.getElementById('countries-info-title').innerHTML = name;
+                    modalPositioning(false);
                 }else{
                     name = actualCountries[0];
 
@@ -126,10 +148,9 @@ window.TransferWise = window.TransferWise || {};
                         });
                     }
                     getCountry();
+                    document.getElementById('country-info-title').innerHTML = name;
+                    modalPositioning(true);
                 }
-                document.getElementById('country-info-title').innerHTML = name;
-
-                modalPositioning();
             });
 
             map.on('mousemove', function(e){
