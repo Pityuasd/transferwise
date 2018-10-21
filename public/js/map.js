@@ -122,10 +122,16 @@ window.TransferWise = window.TransferWise || {};
                             code1: countryCodes[0],
                             code2: countryCodes[1]
                         }, function (data, status) {
+
                             JSON.stringify(data);
+
+                            const numberWithCommas = (x) => {
+                                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+
                             document.getElementById('fromCurrency').innerHTML = data.currency1;
                             document.getElementById('toCurrency').innerHTML = data.currency2;
-                            document.getElementById('price').innerHTML = data.price;
+                            document.getElementById('price').innerHTML = numberWithCommas( Math.round(data.price));
                         });
                     }
                     getCountries();
@@ -139,9 +145,14 @@ window.TransferWise = window.TransferWise || {};
                             code: feature.properties.iso_a2
                         }, function(data, status){
                             JSON.stringify(data);
-                            document.getElementById('countOfCustomer').innerHTML = data.customers;
-                            document.getElementById('countOfTransactions').innerHTML = data.transactions;
-                            document.getElementById('moneyTransfered').innerHTML = data.moneyTransfered;
+
+                            const numberWithCommas = (x) => {
+                                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+
+                            document.getElementById('countOfCustomer').innerHTML = numberWithCommas(data.customers);
+                            document.getElementById('countOfTransactions').innerHTML = numberWithCommas(data.transactions);
+                            document.getElementById('moneyTransfered').innerHTML = numberWithCommas(data.moneyTransfered);
                         });
                     }
                     getCountry();

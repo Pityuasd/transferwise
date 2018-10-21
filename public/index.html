@@ -426,8 +426,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false" data-backdrop="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #00b9ff">
-                <h5 class="modal-title" id="country-info-title">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bold; font-size: 1.5rem;" id="country-info-title">
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-canvas-show>
                     <span aria-hidden="true">&times;</span>
@@ -435,13 +435,13 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <label>Customers: <span id="countOfCustomer"></span></label>
+                    <label><i class="fa fa-user-alt"></i>   Customers: <span id="countOfCustomer"></span></label>
                 </div>
                 <div>
-                    <label>Transactions: <span id="countOfTransactions"></span></label>
+                    <label><i class="fa fa-exchange-alt"></i>   Transactions: <span id="countOfTransactions"></span></label>
                 </div>
                 <div>
-                    <label>Money transfered: <span id="moneyTransfered"></span></label>
+                    <label><i class="fa fa-handshake"></i>  Money transfered: <span id="moneyTransfered"></span></label>
                 </div>
             </div>
         </div>
@@ -451,36 +451,42 @@
 <div class="modal fade" id="countries" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false" data-backdrop="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #00b9ff">
-                <h5 class="modal-title" id="countries-info-title">
-                </h5>
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: bold; font-size: 1.5rem;" id="countries-info-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-canvas-show>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div>
-                    <label>From: <span id="fromCurrency"></span></label>
+                    <label><i class="fa fa-money-bill"></i>  From: <span id="fromCurrency"></span></label>
                 </div>
                 <div>
-                    <label>To: <span id="toCurrency"></span></label>
+                    <label><i class="fa fa-money-bill-alt"></i>  To: <span id="toCurrency"></span></label>
                 </div>
                 <div>
-                    <label>Price: <span id="price"></span></label>
+                    <label> <i class="fa fa-credit-card"></i>  Price: <span id="price" class="text-right"></span></label>
                 </div>
                 <div>
-                    <div class="form-group">
+                    <div class="form-group" style="width: 60%">
                         <input type="text" placeholder="transacted value" class="form-control form-inline" id="transactedValue">
                     </div>
-                    <button style="padding-top: 1%" class="btn btn-primary btn-sm" id="calculate">Calculate</button>
+                    <button style="margin-top: 2%" class="btn btn-primary btn-sm" id="calculate">Calculate    <i class="fa fa-angle-right" style="color: white; padding-left: 7px"></i> </button>
                 </div>
-                <div>
-                    <span id="result"></span>
+                <div style="padding-top:4%;" class="text-center">
+                    <span id="result" style="font-size: 16px; font-family: Arial"><span id="currencyType" ></span></span>
                     <script>
+                        document.getElementById('currencyType').innerHTML = $('#toCurrency').val();
+
                         $(document).ready(function() {
                             $("#calculate").click(function(){
                                 var transactedValue = $('#transactedValue').val();
-                                document.getElementById('result').innerHTML = Math.round(transactedValue * $('#price')[0].innerHTML);
+
+
+                                const numberWithCommas = (x) => {
+                                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
+                                document.getElementById('result').innerHTML = numberWithCommas( Math.round(transactedValue * $('#price')[0].innerHTML));
                             });
                         });
                     </script>
