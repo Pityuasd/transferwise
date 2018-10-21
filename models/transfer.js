@@ -39,16 +39,16 @@ const schema = mongoose.Schema({
 const model = mongoose.model("Transfer", schema);
 
 schema.post("save", function (document) {
-    var identifier = document.properties || {};
+    var identifier = {};
     identifier["date"] = new Date().toISOString().substr(0, 10);
 
-    var metric = "values.transfer";
-    var operator = {"$inc": {}};
-    operator["$inc"][metric] = 1;
+    var operator = {"$inc": {
+        "values.transfer": 1
+    }};
     MetricModel.update(
         {"_id": identifier},
         operator,
-        {upsert: true},
+        {"upsert": true},
         function (err) {
             err && console.log(err);
         }
