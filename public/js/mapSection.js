@@ -2,8 +2,8 @@
 
 function modalPositioning(isSingleCountry){
     if(isSingleCountry){
-        $('#exampleModal').css("top", ($(window).height() * 0.55));
-        $('#exampleModal').css("right", $(window).width() * 0.8);
+        $('#exampleModal').css("top", ($(window).height() * 0.55) - 100);
+        $('#exampleModal').css("right", $(window).width() * 0.8 - 50);
 
         if($('#countries').is(':visible')){
             $('#countries').modal().hide();
@@ -11,8 +11,8 @@ function modalPositioning(isSingleCountry){
 
         $("#exampleModal").modal();
     }else{
-        $('#countries').css("top", ($(window).height() * 0.55));
-        $('#countries').css("right", $(window).width() * 0.8);
+        $('#countries').css("top", ($(window).height() * 0.55) - 200);
+        $('#countries').css("right", $(window).width() * 0.8 - 50);
 
         if($('#exampleModal').is(':visible')){
             $('#exampleModal').modal().hide();

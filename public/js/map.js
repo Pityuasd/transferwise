@@ -81,8 +81,6 @@ window.TransferWise = window.TransferWise || {};
             map.getCanvas().style.cursor = 'pointer';
 
             map.on('click', function(e){
-                console.log("meh");
-
                 // function printMousePos(event) {
                 //     modalPositioning(e.point.x, e.point.y);
                 // }
