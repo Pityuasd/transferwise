@@ -272,7 +272,17 @@ hr.style13 {
     opacity: 0;
 }
 
+.metric-group-container:hover .metric-alt {
+    opacity: 0;
+}
+
+.metric-group-container:hover .metric-title {
+    opacity: 0;
+}
+
 .metric-group-container .metric-title {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
     font-weight: 700;
     margin-top: -6px;
     position: absolute;
@@ -280,9 +290,30 @@ hr.style13 {
 }
 
 .metric-group-container .metric-alt {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
     margin-top: 12px;
     position: absolute;
     font-size: 15px;
+}
+
+.metric-group-container .metric-caption {
+    font-size: 17px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.metric-group-container:hover .metric-caption {
+    opacity: 1;
+}
+
+.metric-group-container .metric-base-icon {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.metric-group-container:hover .metric-base-icon {
+    opacity: 0;
 }
 
 i.fa {

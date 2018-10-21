@@ -79,7 +79,7 @@ io.on('connection', function (socket) {
             }
         });
 
-        const arrowsCollection = dbRepl.collection('arrows');
+        const arrowsCollection = dbRepl.collection('transfers');
         const arrowsChangeStream = arrowsCollection.watch();
 
         arrowsChangeStream.on('change', (change) => {
@@ -88,6 +88,13 @@ io.on('connection', function (socket) {
                 socket.emit("arrows", change['fullDocument']);
             }
         });
+});
+
+
+app.post("/transfer", function (request, response) {
+    var transfer = assign(new TransferModel(), request.body);
+    transfer.save();
+    response.send(transfer);
 });
 
 app.post("/events", function (request, response) {

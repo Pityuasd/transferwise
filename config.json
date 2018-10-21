@@ -3,6 +3,6 @@
         "port": 3000
     },
     "mongo": {
-        "host": "mongodb://localhost/test"
+        "host": "mongodb://35.190.154.70:27017/test"
     }
 }
