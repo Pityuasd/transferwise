@@ -261,6 +261,7 @@ hr.style13 {
     border-top: 1px solid #ddd;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     z-index: 999;
 }
 
@@ -308,6 +309,8 @@ hr.style13 {
 }
 
 .metric-group-container .metric-caption {
+    font-weight: 700;
+    margin-left: -10px;
     font-size: 17px;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
