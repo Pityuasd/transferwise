@@ -379,6 +379,16 @@
             // }
         );
 
+        socket.on(
+            "metric",
+            $.throttle(
+                100,
+                function (data) {
+                    console.log(data);
+                }
+            )
+        );
+
         function end() {
             var map = window.TransferWise.map;
 
