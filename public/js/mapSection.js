@@ -2,7 +2,7 @@
 
 function modalPositioning(isSingleCountry){
     if(isSingleCountry){
-        $('#exampleModal').css("top", ($(window).height() * 0.6));
+        $('#exampleModal').css("top", ($(window).height() * 0.7));
         $('#exampleModal').css("right", $(window).width() * 0.8);
 
         if($('#countries').is(':visible')){

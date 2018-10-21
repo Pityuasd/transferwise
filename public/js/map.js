@@ -40,7 +40,7 @@ window.TransferWise = window.TransferWise || {};
                 'type': 'fill',
                 'source': 'states',
                 'paint': {
-                    "fill-outline-color": "rgba(0,0,0,0.1)",
+                    "fill-outline-color": "#666",
                     "fill-color": "rgba(0,0,0,0.1)"
                 }
             })
