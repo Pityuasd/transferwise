@@ -142,11 +142,9 @@ window.TransferWise = window.TransferWise || {};
                         $.get("/country", {
                             code: feature.properties.iso_a2
                         }, function(data, status){
-                            JSON.stringify(data);
-
-                            const numberWithCommas = (x) => {
+                            const numberWithCommas = function (x) {
                                 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                            }
+                            };
 
                             document.getElementById('countOfCustomer').innerHTML = numberWithCommas(data.customers);
                             document.getElementById('countOfTransactions').innerHTML = numberWithCommas(data.transactions);

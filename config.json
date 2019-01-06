@@ -3,6 +3,6 @@
         "port": 3000
     },
     "mongo": {
-        "host": "mongodb://35.190.154.70:27017/test"
+        "host": "mongodb://siteRootAdmin:Asderjoska00!@cluster0-shard-00-00-rbodx.mongodb.net:27017,cluster0-shard-00-01-rbodx.mongodb.net:27017,cluster0-shard-00-02-rbodx.mongodb.net:27017/test?replicaSet=Cluster0-shard-0"
     }
 }

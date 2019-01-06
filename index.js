@@ -99,6 +99,7 @@ io.on('connection', function (socket) {
             }
         });
     } catch (e) {
+        console.log(e);
         console.error("Failed to connect to the replicaset");
     }
 });
@@ -118,6 +119,7 @@ app.post("/events", function (request, response) {
 
 app.get("/country", function (request, response) {
     var countryCode = request.param("code");
+
     MetricModel.findOne({"_id.country": countryCode}, function (err, metric) {
         if (err) return console.error(err);
         if(metric) {
@@ -134,6 +136,12 @@ app.get("/country", function (request, response) {
             };
             response.send(mockMetric);
         }
+    });
+
+    response.send({
+        customers: 0,
+        transactions: 0,
+        moneyTransfered: 0
     });
 });
 
