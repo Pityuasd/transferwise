@@ -69,7 +69,7 @@ app.use(require("express").static("public"));
 app.use(bodyParser.json());
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
+    try {
         const metricsCollection = dbRepl.collection('metrics');
         const metricsChangeStream = metricsCollection.watch();
 
@@ -98,6 +98,9 @@ io.on('connection', function (socket) {
                 socket.emit("arrows", change['fullDocument']);
             }
         });
+    } catch (e) {
+        console.error("Failed to connect to the replicaset");
+    }
 });
 
 
